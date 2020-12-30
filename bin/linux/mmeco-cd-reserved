@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# DESCRIPTION Change directory to reserved packages path
+function _mMecoCDReservedMain()
+{
+    local failurePrintColor="\n\e[31m%s\e[m\n";
+
+    if ! [[ "$MECO_RESERVED_PACKAGES_PATH" ]]; then
+
+        printf ${failurePrintColor} "No reserved packages path found.";
+
+        return 1;
+
+    fi
+
+    if [[ ! -d "$MECO_RESERVED_PACKAGES_PATH" ]]; then
+
+        printf ${failurePrintColor} "Reserved packages path does not exist: $MECO_RESERVED_PACKAGES_PATH";
+
+        return 1;
+
+    fi
+
+    cd "$MECO_RESERVED_PACKAGES_PATH";
+
+}
+alias mmeco-cd-reserved=_mMecoCDReservedMain

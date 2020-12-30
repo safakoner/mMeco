@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# DESCRIPTION Change directory to development packages path
+function _mMecoCDDevMain()
+{
+    local failurePrintColor="\n\e[31m%s\e[m\n";
+
+    if ! [[ "$MECO_DEVELOPMENT_PACKAGES_PATH" ]]; then
+
+        printf ${failurePrintColor} "You must initialize development environment to navigate to development packages path.";
+
+        return 1;
+
+    fi
+
+    if [[ ! -d "$MECO_DEVELOPMENT_PACKAGES_PATH" ]]; then
+
+        printf ${failurePrintColor} "Development packages path does not exist: $MECO_DEVELOPMENT_PACKAGES_PATH";
+
+        return 1;
+
+    fi
+
+    cd "$MECO_DEVELOPMENT_PACKAGES_PATH";
+
+}
+alias mmeco-cd-dev=_mMecoCDDevMain

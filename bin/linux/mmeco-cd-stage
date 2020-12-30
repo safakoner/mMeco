@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# DESCRIPTION Change directory to stage packages path
+function _mMecoCDStageMain()
+{
+    local failurePrintColor="\n\e[31m%s\e[m\n";
+
+    if ! [[ "$MECO_STAGE_PACKAGES_PATH" ]]; then
+
+        printf ${failurePrintColor} "You must initialize stage environment to navigate to stage packages path.";
+
+        return 1;
+
+    fi
+
+    if [[ ! -d "$MECO_STAGE_PACKAGES_PATH" ]]; then
+
+        printf ${failurePrintColor} "Stage packages path does not exist: $MECO_STAGE_PACKAGES_PATH";
+
+        return 1;
+
+    fi
+
+    cd "$MECO_STAGE_PACKAGES_PATH";
+
+}
+alias mmeco-cd-stage=_mMecoCDStageMain

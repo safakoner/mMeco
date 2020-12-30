@@ -1,0 +1,2 @@
+# DESCRIPTION Create a project
+$MECO_PYTHON_EXECUTABLE_PATH -c "import mMeco.mecoCmd;mMeco.mecoCmd.createProject()" $@
